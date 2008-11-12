@@ -7,6 +7,7 @@ requires 'File::Basename';
 requires 'File::Spec';
 requires 'Text::Template';
 
+build_requires 'FindBin';
 build_requires 'Test::More';
 
 WriteAll;
