@@ -9,7 +9,7 @@ our $VERSION = '0.01';
 
 =head1 NAME
 
-UFL::WebAdmin::TemplateHelper - 
+UFL::WebAdmin::TemplateHelper - Helper functions for filling templates
 
 =head1 SYNOPSIS
 
