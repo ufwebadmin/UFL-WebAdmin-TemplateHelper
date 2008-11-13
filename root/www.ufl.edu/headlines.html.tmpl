@@ -1,0 +1,12 @@
+<%
+my $headlines = '';
+for my $i (0 .. $number_of_headlines - 1) {
+  $link  = HTML::Entities::encode_entities($rss{items}[$i]{link});
+  $title = HTML::Entities::encode_entities($rss{items}[$i]{title});
+  $headlines .= qq[$spaces<li><a href="$link"><span class="headline">$title.</span> more&hellip;</a></li>];
+  if ($i < $number_of_headlines - 1) {
+    $headlines .= "\n";
+  }
+}
+return $headlines;
+%>
