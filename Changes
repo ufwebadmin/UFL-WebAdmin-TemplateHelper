@@ -1,5 +1,8 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
+0.03  Fri Nov 14 15:20:38 EST 2008
+        - Fix headlines.pl library path
+
 0.02  Fri Nov 14 15:13:40 EST 2008
         - Move headline scripts into project
 
