@@ -15,6 +15,7 @@ use HTML::Entities ();
 use LWP::UserAgent;
 use XML::RSS;
 
+# TODO: Make script and templates installable
 use lib '../lib';
 use UFL::WebAdmin::TemplateHelper;
 
