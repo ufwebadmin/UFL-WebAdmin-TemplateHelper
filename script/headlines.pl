@@ -14,6 +14,8 @@ use warnings;
 use HTML::Entities ();
 use LWP::UserAgent;
 use XML::RSS;
+
+use lib '..';
 use UFL::WebAdmin::TemplateHelper;
 
 
