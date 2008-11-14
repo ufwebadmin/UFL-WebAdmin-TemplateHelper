@@ -6,12 +6,11 @@
 ## Example:
 ##   ./headlines.pl \
 ##     http://news.ufl.edu/research/feed/ \
-##     headlines.html.tmpl
+##     ../root/www.ufl.edu/headlines.html.tmpl
 ##
 
 use strict;
 use warnings;
-use Cwd ();
 use HTML::Entities ();
 use LWP::UserAgent;
 use XML::RSS;
