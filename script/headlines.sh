@@ -3,7 +3,12 @@
 feed="$1"
 file="$2"
 number="$3"
-template="../root/www.ufl.edu/headlines.html.tmpl"
+template="$4"
+
+if [ "$template" == "" ]
+then template="../root/www.ufl.edu/headlines.html.tmpl"
+fi
+
 log="$HOME"/log/headlines.txt
 
 cd "$(dirname $0)" &&
