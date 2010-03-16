@@ -4,7 +4,7 @@ for my $i (0 .. $number_of_headlines - 1) {
   $link  = HTML::Entities::encode_entities($rss{items}[$i]{link});
   $title = HTML::Entities::encode_entities($rss{items}[$i]{title});
   $description = $rss{items}[$i]{description};
-  $headlines .= qq[$spaces<h4 class="headline"><a href="$link">$title.</a></h4><p>$description <a href="$link">more&hellip;</a></p>];
+  $headlines .= qq[$spaces<h4 class="headline"><a href="$link">$title</a></h4><p>$description <a href="$link">more&hellip;</a></p>];
   if ($i < $number_of_headlines - 1) {
     $headlines .= "\n";
   }
