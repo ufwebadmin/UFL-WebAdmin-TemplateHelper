@@ -5,7 +5,7 @@ use warnings;
 use File::Basename ();
 use File::Spec;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04_01';
 
 =head1 NAME
 
@@ -25,8 +25,37 @@ default delimiters are C<<<%>> and C<<%>>>.
 
 our $DEFAULT_OPEN_DELIMITER = '<%';
 our $DEFAULT_CLOSE_DELIMITER = '%>';
+our $USER_AGENT_STRING = "UFL-WebAdmin-TemplateHelper/$VERSION ";
 
 =head1 METHODS
+
+=head2 get_url
+
+Fetch the specified URL using L<LWP::UserAgent> and return it. If an
+error occurs, the method dies with the HTTP response status.
+
+=cut
+
+sub get_url {
+    my ($url) = @_;
+
+    require LWP::UserAgent;
+
+    my $ua = LWP::UserAgent->new;
+    $ua->agent($USER_AGENT_STRING);
+
+    my $content = undef;
+
+    my $response = $ua->get($url);
+    if ($response->is_success) {
+        $content = $response->content;
+    }
+    else {
+        die $response->status_line;
+    }
+
+    return $content;
+}
 
 =head2 get_template
 
@@ -101,6 +130,16 @@ sub normalize_filename {
     );
 
     return $normalized;
+}
+
+=head2 debug
+
+Output any arguments as debugging messages.
+
+=cut
+
+sub debug {
+    warn "[", scalar localtime, "] ", @_, "\n";
 }
 
 =head1 AUTHOR
