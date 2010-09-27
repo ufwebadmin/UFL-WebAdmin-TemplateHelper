@@ -1,8 +1,9 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
 0.04
-        - Refactor function from headlines.pl script to
+        - Refactor functions from headlines.pl script to
           UFL::WebAdmin::TemplateHelper so they can be reused
+        - Add an event template processor, using iCalendar
 
 0.03  Fri Nov 14 15:20:38 EST 2008
         - Fix headlines.pl library path
