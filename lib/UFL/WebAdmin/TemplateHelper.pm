@@ -48,7 +48,7 @@ sub get_url {
 
     my $response = $ua->get($url);
     if ($response->is_success) {
-        $content = $response->content;
+        $content = $response->decoded_content;
     }
     else {
         die $response->status_line;
