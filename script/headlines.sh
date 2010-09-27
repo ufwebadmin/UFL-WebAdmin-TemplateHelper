@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#
+# Maintained for backwards compatibility with existing cron jobs.
+#
+
 feed="$1"
 file="$2"
 number="$3"
@@ -9,10 +13,4 @@ if [ "x$template" == "x" ]; then
     template="../root/www.ufl.edu/headlines.html.tmpl"
 fi
 
-log="$HOME"/log/headlines.txt
-
-umask 022
-cd "$(dirname $0)" &&
-    ./headlines.pl "$feed" "$template" "$number" > "$file.tmp" 2>> "$log" &&
-    mv "$file.tmp" "$file"
-rm -f "$file.tmp"
+"$(dirname $0)"/wrapper.sh headlines.pl "$feed" "$file" "$number" "$template"

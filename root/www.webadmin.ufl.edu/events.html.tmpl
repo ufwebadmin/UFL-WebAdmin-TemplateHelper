@@ -1,0 +1,38 @@
+<%
+my $events = '';
+foreach my $event (@selected_events) {
+  $link = HTML::Entities::encode_entities($event->{URL});
+  $title = HTML::Entities::encode_entities($event->{SUMMARY});
+  $description = HTML::Entities::encode_entities($event->{DESCRIPTION});
+  $dtstart = HTML::Entities::encode_entities($event->{DTSTART}->iso8601);
+  $dtend = HTML::Entities::encode_entities($event->{DTSTART}->iso8601);
+  $location = HTML::Entities::encode_entities($event->{LOCATION});
+
+  $events .= qq[$spaces<span class="vevent">];
+  $events .= qq[<h4 class="summary">];
+
+  if ($link) {
+    $events .= qq[<a class="url" href="$link">];
+  }
+  $events .= qq[$title];
+  if ($link) {
+    $events .= qq[</a>];
+  }
+
+  $events .= qq[ on <abbr class="dtstart" title="$dtstart">$dtstart</abbr>];
+
+  $events .= qq[</h4>];
+
+  if ($description) {
+    $events .= qq[<p class="description">$description];
+    if ($link) {
+      $events .= qq[ <a class="url" href="$link">more&hellip;</a>];
+    }
+    $events .= qq[</p>];
+  }
+
+  $events .= qq[</span><!-- .vevent -->\n];
+}
+chomp $events;
+return $events;
+%>
