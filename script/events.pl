@@ -11,6 +11,7 @@
 
 use strict;
 use warnings;
+use DateTime;
 use FindBin;
 use HTML::Entities ();
 use iCal::Parser;

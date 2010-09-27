@@ -3,9 +3,12 @@ use inc::Module::Install;
 name     'UFL-WebAdmin-TemplateHelper';
 all_from 'lib/UFL/WebAdmin/TemplateHelper.pm';
 
+requires 'DateTime';
 requires 'File::Basename';
 requires 'File::Spec';
+requires 'FindBin';
 requires 'HTML::Entities';
+requires 'iCal::Parser';
 requires 'LWP::UserAgent';
 requires 'Text::Template';
 requires 'XML::RSS';
