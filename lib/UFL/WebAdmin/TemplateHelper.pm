@@ -5,7 +5,7 @@ use warnings;
 use File::Basename ();
 use File::Spec;
 
-our $VERSION = '0.04_01';
+our $VERSION = '0.04';
 
 =head1 NAME
 
