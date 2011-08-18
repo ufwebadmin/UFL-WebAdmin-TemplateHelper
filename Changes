@@ -1,6 +1,7 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
 0.04
+        - Add log parameter to wrapper script
         - Refactor functions from headlines.pl script to
           UFL::WebAdmin::TemplateHelper so they can be reused
         - Add an event template processor, using iCalendar

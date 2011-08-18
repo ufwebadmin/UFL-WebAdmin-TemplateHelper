@@ -9,8 +9,7 @@ feed="$2"
 file="$3"
 number="$4"
 template="$5"
-
-log="$HOME"/log/UFL-WebAdmin-TemplateHelper.txt
+log="${6:-/dev/null}"
 
 umask 022
 cd "$(dirname $0)" &&
