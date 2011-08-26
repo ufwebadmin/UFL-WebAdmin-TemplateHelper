@@ -2,9 +2,11 @@
 
 use strict;
 use warnings;
+use File::Basename ();
+use File::Path ();
 use File::Spec;
 use FindBin;
-use Test::More tests => 12;
+use Test::More tests => 14;
 use UFL::WebAdmin::TemplateHelper;
 
 # get_template
@@ -71,4 +73,23 @@ use UFL::WebAdmin::TemplateHelper;
     my $normalized = $helper->normalize_filename($template_file);
 
     is($normalized, File::Spec->join('data', 'simple.tmpl'));
+}
+
+# save_file
+{
+    my $helper = UFL::WebAdmin::TemplateHelper->new;
+
+    my $dir = File::Spec->join($FindBin::Bin, 'var');
+    my $file = File::Spec->join($dir, 'save_file.txt');
+
+    File::Path::make_path(File::Basename::dirname($file))
+        unless -d $dir;
+    unlink $file;
+
+    $helper->save_file('test', $file);
+
+    ok(-f $file, 'file exists');
+
+    my @stat = stat $file;
+    is(sprintf("%o", $stat[2]), 100664, 'permissions are set correctly');
 }

@@ -3,6 +3,7 @@ use inc::Module::Install;
 name     'UFL-WebAdmin-TemplateHelper';
 all_from 'lib/UFL/WebAdmin/TemplateHelper.pm';
 
+requires 'Carp';
 requires 'Class::Accessor::Fast';
 requires 'DateTime';
 requires 'File::Basename';
@@ -18,6 +19,8 @@ requires 'XML::RSS';
 requires_external_bin '/bin/sh';
 requires_external_bin '/usr/bin/env';
 
+build_requires 'File::Basename';
+build_requires 'File::Path';
 build_requires 'File::Spec';
 build_requires 'FindBin';
 build_requires 'Test::More';

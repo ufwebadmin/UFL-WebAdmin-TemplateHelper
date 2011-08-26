@@ -3,6 +3,7 @@ package UFL::WebAdmin::TemplateHelper;
 use strict;
 use warnings;
 use base 'Class::Accessor::Fast';
+use Carp;
 use File::Basename ();
 use File::Spec;
 use LWP::UserAgent;
@@ -142,6 +143,27 @@ sub normalize_filename {
     );
 
     return $normalized;
+}
+
+=head2 save_file
+
+Save a file and set permissions appropriately for viewing online. The
+parent directory must exist before calling this method; otherwise, an
+exception is raised.
+
+=cut
+
+sub save_file {
+    my ($self, $content, $filename) = @_;
+
+    umask 022;
+
+    open my $fh, '>', $filename
+        or croak "Error opening file $filename: $!";
+    print $fh $content;
+    close $fh;
+
+    chmod 0664, $filename;
 }
 
 =head2 debug
