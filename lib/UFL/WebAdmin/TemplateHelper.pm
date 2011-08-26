@@ -11,7 +11,7 @@ use Text::Template;
 
 __PACKAGE__->mk_accessors(qw/open_delimiter close_delimiter user_agent_string user_agent/);
 
-our $VERSION = '0.05_01';
+our $VERSION = '0.05';
 
 =head1 NAME
 

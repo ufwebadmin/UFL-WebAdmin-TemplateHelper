@@ -1,6 +1,6 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
-0.05
+0.05  Fri Aug 26 16:45:23 EDT 2011
         - Refactor UFL::WebAdmin::TemplateHelper to be used as an
           object
         - Add save_file method
