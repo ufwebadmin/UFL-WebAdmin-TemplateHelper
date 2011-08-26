@@ -38,18 +38,20 @@ sub main {
     $num_events ||= $DEFAULT_NUM_EVENTS;
     $num_spaces ||= $DEFAULT_NUM_SPACES;
 
-    my $content = UFL::WebAdmin::TemplateHelper::get_url($url);
-    UFL::WebAdmin::TemplateHelper::debug("Fetched [$url]");
+    my $helper = UFL::WebAdmin::TemplateHelper->new;
+
+    my $content = $helper->get_url($url);
+    $helper->debug("Fetched [$url]");
 
     my $parser = iCal::Parser->new;
     my $ical = $parser->parse_strings($content);
     die 'Error parsing feed' unless $ical;
-    UFL::WebAdmin::TemplateHelper::debug("Parsed feed");
+    $helper->debug("Parsed feed");
 
     my $selected_events = select_events($ical->{events}, DateTime->now, $num_events);
 
-    my $normalized = UFL::WebAdmin::TemplateHelper::normalize_filename($template);
-    UFL::WebAdmin::TemplateHelper::debug("Template = [$template], normalized = [$normalized]");
+    my $normalized = $helper->normalize_filename($template);
+    $helper->debug("Template = [$template], normalized = [$normalized]");
 
     my $spaces = ' ' x $num_spaces;
     my %vars = (
@@ -59,9 +61,9 @@ sub main {
         spaces          => $spaces,
     );
 
-    my $output = UFL::WebAdmin::TemplateHelper::fill_template($template, \%vars);
+    my $output = $helper->fill_template($template, \%vars);
     $output .= "$spaces<!-- Generated from $normalized on " . scalar(localtime) . " -->";
-    UFL::WebAdmin::TemplateHelper::debug("Filled template");
+    $helper->debug("Filled template");
 
     print $output;
 }

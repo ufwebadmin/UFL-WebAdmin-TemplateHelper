@@ -37,16 +37,18 @@ sub main {
     $number_of_headlines ||= $DEFAULT_NUMBER_OF_HEADLINES;
     $number_of_spaces    ||= $DEFAULT_NUMBER_OF_SPACES;
 
-    my $content = UFL::WebAdmin::TemplateHelper::get_url($url);
-    UFL::WebAdmin::TemplateHelper::debug("Fetched [$url]");
+    my $helper = UFL::WebAdmin::TemplateHelper->new;
+
+    my $content = $helper->get_url($url);
+    $helper->debug("Fetched [$url]");
 
     my $rss = XML::RSS->new;
     $rss->parse($content);
     die 'Error parsing feed' unless @{ $rss->{items} };
-    UFL::WebAdmin::TemplateHelper::debug("Parsed feed");
+    $helper->debug("Parsed feed");
 
-    my $normalized = UFL::WebAdmin::TemplateHelper::normalize_filename($template);
-    UFL::WebAdmin::TemplateHelper::debug("Template = [$template], normalized = [$normalized]");
+    my $normalized = $helper->normalize_filename($template);
+    $helper->debug("Template = [$template], normalized = [$normalized]");
 
     my $spaces = ' ' x $number_of_spaces;
     my %vars = (
@@ -55,9 +57,9 @@ sub main {
         spaces              => $spaces,
     );
 
-    my $output = UFL::WebAdmin::TemplateHelper::fill_template($template, \%vars);
+    my $output = $helper->fill_template($template, \%vars);
     $output .= "$spaces<!-- Generated from $normalized on " . scalar(localtime) . " -->";
-    UFL::WebAdmin::TemplateHelper::debug("Filled template");
+    $helper->debug("Filled template");
 
     print $output;
 }

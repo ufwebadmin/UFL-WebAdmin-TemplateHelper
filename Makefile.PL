@@ -3,6 +3,7 @@ use inc::Module::Install;
 name     'UFL-WebAdmin-TemplateHelper';
 all_from 'lib/UFL/WebAdmin/TemplateHelper.pm';
 
+requires 'Class::Accessor::Fast';
 requires 'DateTime';
 requires 'File::Basename';
 requires 'File::Spec';

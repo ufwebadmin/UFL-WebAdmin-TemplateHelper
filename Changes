@@ -1,5 +1,9 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
+0.05
+        - Refactor UFL::WebAdmin::TemplateHelper to be used as an
+          object
+
 0.04  Thu Aug 18 16:48:41 EDT 2011
         - Add log parameter to wrapper script
         - Refactor functions from headlines.pl script to
