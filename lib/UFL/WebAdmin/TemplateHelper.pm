@@ -11,7 +11,7 @@ use Text::Template;
 
 __PACKAGE__->mk_accessors(qw/open_delimiter close_delimiter user_agent_string user_agent/);
 
-our $VERSION = '0.05';
+our $VERSION = '0.06_01';
 
 =head1 NAME
 
@@ -71,7 +71,7 @@ sub get_url {
 
     my $response = $self->user_agent->get($url);
     if ($response->is_success) {
-        $content = $response->decoded_content;
+        $content = $response->content;
     }
     else {
         die $response->status_line;
