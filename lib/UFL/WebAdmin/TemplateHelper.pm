@@ -111,7 +111,7 @@ sub get_template {
 Fill in the given template with the given variables, using
 L<Text::Template>.
 
-    my $content = UFL::WebAdmin::TemplateHelper::fill_template('path/to/template.tmpl', { name => 'Test' });
+    my $content = $helper->fill_template('path/to/template.tmpl', { name => 'Test' });
 
 =cut
 
@@ -150,6 +150,8 @@ sub normalize_filename {
 Save a file and set permissions appropriately for viewing online. The
 parent directory must exist before calling this method; otherwise, an
 exception is raised.
+
+    $helper->save_file($content, 'output.html');
 
 =cut
 
