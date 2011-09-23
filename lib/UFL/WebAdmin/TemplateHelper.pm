@@ -145,6 +145,27 @@ sub normalize_filename {
     return $normalized;
 }
 
+=head2 comment_html
+
+Return a comment appropriate for tagging an HTML document generated
+using this class.
+
+    $content .= $helper->comment_html($filename);
+
+=cut
+
+sub comment_html {
+    my ($self, $filename) = @_;
+
+    my $comment = qq[<!-- Generated from ]
+        . $self->normalize_filename($filename)
+        . qq[ on ]
+        . scalar(localtime())
+        . qq[ -->\n];
+
+    return $comment;
+}
+
 =head2 save_file
 
 Save a file and set permissions appropriately for viewing online. The

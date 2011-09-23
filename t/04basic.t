@@ -6,7 +6,7 @@ use File::Basename ();
 use File::Path ();
 use File::Spec;
 use FindBin;
-use Test::More tests => 14;
+use Test::More tests => 15;
 use UFL::WebAdmin::TemplateHelper;
 
 # get_template
@@ -73,6 +73,17 @@ use UFL::WebAdmin::TemplateHelper;
     my $normalized = $helper->normalize_filename($template_file);
 
     is($normalized, File::Spec->join('data', 'simple.tmpl'));
+}
+
+# comment_html
+{
+    my $helper = UFL::WebAdmin::TemplateHelper->new;
+
+    my $template_file = File::Spec->join($FindBin::Bin, 'data', 'simple.tmpl');
+    my $comment = $helper->comment_html($template_file);
+
+    my $filename = File::Spec->join('data', 'simple.tmpl');
+    like($comment, qr/^<!-- Generated from $filename on .+ \d{4} -->$/);
 }
 
 # save_file
