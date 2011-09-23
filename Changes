@@ -1,6 +1,6 @@
 Revision history for UFL-WebAdmin-TemplateHelper
 
-0.06
+0.06  Fri Sep 23 13:51:41 EDT 2011
         - Update get_url so that it does not automatically decode
           content
         - Add a comment_html method to mark where the file came from
